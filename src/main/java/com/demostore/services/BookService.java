@@ -5,13 +5,15 @@ import com.demostore.models.Book;
 import java.util.List;
 
 public interface BookService {
-    List<Book> getAllBooks();
+    public List<Book> getAllBooks();
 
-    Book getBookById(Long id);
+    public Book getBookById(Long id);
 
-    Book getBookByName(String name);
+    public Book getBookByName(String name);
 
-    Book saveBook(Book book);
+    public Book saveBook(Book book);
 
-    void deleteBook(Long id);
+    public void deleteBook(Long id);
+
+    public Book editBook(Long id, Book book);
 }

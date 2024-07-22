@@ -8,25 +8,25 @@
 <div class="container">
 
     <div th:if="${not #lists.isEmpty(books)}">
-        <h2>Product List</h2>
+        <h2>Book List</h2>
         <table class="table table-striped">
             <tr>
-                <th>Id</th>
                 <th>Name</th>
+                <th>Author</th>
+                <th>Release Year</th>
                 <th>Price</th>
                 <th>View</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
-            <tr th:each="books : ${book}">
+            <tr th:each="book : ${books}">
                 <td th:text="${book.id}"><a href="/product/${product.id}">Id</a></td>
-                <td th:text="${book.name}">descirption</td>
+                <td th:text="${book.name}">name</td>
                 <td th:text="${book.author}">author</td>
                 <td th:text="${book.releaseYear}">year</td>
                 <td th:text="${book.price}">price</td>
                 <td><a th:href="${ '/' + book.id}">View</a></td>
                 <td><a th:href="${'/edit/' + book.id}">Edit</a></td>
-                <td><a th:href="${'/delete/' + book.id}">Delete</a></td>
             </tr>
         </table>
 

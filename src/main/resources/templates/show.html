@@ -2,9 +2,48 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title th:text="">Title</title>
+    <title th:text="${book.name}">name</title>
 </head>
 <body>
+<div class="container">
 
+    <h2>Book Details</h2>
+    <div>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label>Book name:</label>
+                <div>
+                    <p class="form-control-static" th:text="${book.name}">Name</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Author:</label>
+                <div>
+                    <p class="form-control-static" th:text="${book.author}">Author</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Release Year:</label>
+                <div>
+                    <p class="form-control-static" th:text="${book.releaseYear}">Year</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Price:</label>
+                <div>
+                    <p class="form-control-static" th:text="${book.price}">Price</p>
+                </div>
+            </div>
+        </form>
+        <form th:action="@{/delete/{id}(id=${book.id})}" method="post">
+            <button type="submit">
+                Delete book
+            </button>
+        </form>
+        <a th:href="@{/edit/{id}(id=${book.id})}">
+            Edit book
+        </a>
+    </div>
+</div>
 </body>
 </html>

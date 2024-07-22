@@ -35,10 +35,6 @@ public class BookController {
     @PostMapping()
     public String create(@ModelAttribute("newBook") Book book) {
         bookService.saveBook(book);
-        System.out.println(book.getId());
-        System.out.println(book.getAuthor());
-        System.out.println(book.getName());
-        System.out.println(book.getReleaseYear());
         return "redirect:/" + book.getId();
     }
 
@@ -47,6 +43,23 @@ public class BookController {
         model.addAttribute("editedBook", bookService.getBookById(id));
         return "edit";
     }
+
+    @PostMapping("/edit/{id}")
+    public String editBook(@PathVariable Long id, @ModelAttribute("editedBook") Book book) {
+        bookService.editBook(id, book);
+        return "redirect:/{id}";
+    }
+
+    @PostMapping("/delete/{id}")
+    public String deleteBook(@PathVariable Long id) {
+        bookService.deleteBook(id);
+        return "redirect:/";
+    }
+
+
+
+
+
 
 
 }
